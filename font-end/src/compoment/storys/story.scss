@@ -1,0 +1,43 @@
+@import '../../style.scss';
+.stories {
+  @include themify($themes) {
+    display: flex;
+    width: 671px;
+    height: 203px;
+    gap: 10px;
+    background-color: themed('bgSoft');
+    border-radius: 8px;
+    .story {
+      position: relative;
+      flex: 1;
+      overflow: hidden;
+      border-radius: 5px;
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+      span {
+        position: absolute;
+        bottom: 10px;
+        left: 6px;
+        color: white;
+      }
+      button {
+        position: absolute;
+        bottom: 33px;
+        left: 10px;
+        color: white;
+        background-color: #082eb8;
+        border-radius: 50%;
+        border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        font-size: 31px;
+      }
+    }
+  }
+}

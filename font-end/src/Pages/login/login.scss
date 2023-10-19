@@ -1,88 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200&display=swap');
 .login {
+  display: flex;
+  background-color: rgb(201, 157, 205);
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  .card {
     display: flex;
-    background-color: rgb(201, 157, 205);
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
-
-    .card {
-        display: flex;
-        width: 50%;
-        background: white;
-        border-radius: 18px;
-        height: 450px;
-        overflow: hidden;
+    width: 50%;
+    background: white;
+    border-radius: 18px;
+    height: 450px;
+    overflow: hidden;
+  }
+  .left {
+    width: 50%;
+    background: linear-gradient(rgba(93, 56, 162, 0.633), rgba(39, 11, 96, 0.5)),
+      url('../../../public/image/ảnh-nền-cực-độc-dáo-hj.jpg') center;
+    background-size: cover;
+    padding: 50px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    h1 {
+      line-height: 31px;
+      font-size: 44px;
     }
-
-    .left {
-        width: 50%;
-        background: linear-gradient(rgba(93, 56, 162, 0.633), rgba(39, 11, 96, 0.5)), url("../../../public/image/ảnh-nền-cực-độc-dáo-hj.jpg") center;
-        background-size: cover;
-        padding: 50px;
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-
-
-        h1 {
-            line-height: 31px;
-            /* size: 139px; */
-            font-size: 44px;
-        }
-
-        ;
-    }
-
-    color:white;
-
-    p {
-        color: white;
-    }
-
-    span {}
-
-    button {
-        border: none;
-        width: 35%;
-        padding: 4px;
-        border-radius: 5px;
-        cursor: pointer;
-    }
+  }
+  color: white;
+  p {
+    color: white;
+  }
+  span {
+  }
+  button {
+    border: none;
+    width: 35%;
+    padding: 4px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
 }
 
 .right {
-    width: 50%;
-    padding: 50px;
-    line-height: 237px;
+  width: 50%;
+  padding: 50px;
+  line-height: 237px;
+  flex-direction: column;
+  color: black;
+  h1 {
+    line-height: 31px;
+    font-size: 44px;
+  }
+  form {
+    display: flex;
     flex-direction: column;
-    color: black;
-
-    h1 {
-        line-height: 31px;
-        /* size: 139px; */
-        font-size: 44px;
+    gap: 50px;
+    input {
+      border: none;
+      border-bottom: 1px solid lightgray;
+      padding: 10px;
     }
-
-
-    form {
-        display: flex;
-        flex-direction: column;
-        gap: 50px;
-
-        input {
-            border: none;
-            border-bottom: 1px solid lightgray;
-            padding: 10px;
-        }
-
-        button {
-            border: none;
-            width: 35%;
-            padding: 9px;
-            border-radius: 5px;
-            cursor: pointer;
-            color: white;
-            background-color: #827cca;
-        }
+    button {
+      border: none;
+      width: 35%;
+      padding: 9px;
+      border-radius: 5px;
+      cursor: pointer;
+      color: white;
+      background-color: #827cca;
     }
+  }
 }

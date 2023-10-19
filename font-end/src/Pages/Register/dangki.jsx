@@ -1,35 +1,31 @@
-
+import React from "react";
 import { Link } from "react-router-dom";
-import "./login.scss";
-import { useContext } from "react";
-import { AuthContext } from "../../context/AthContext";
+import "./dangki.scss";
 
-const Login = () => {
- const{login}=useContext(AuthContext)
- const handleLogin =()=>{
-  login()
- }
+const register = () => {
   return (
-    <div className="login">
+    <div className="dangKi">
       <div className="card">
         <div className="left">
-          <h1>Hello world.</h1>
+          <h1>Đăng nhập.</h1>
           <p>
             Có một số lý do khiến bạn có thể gặp phải vấn đề này. Dưới đây là
             một số điều bạn có thể kiểm tra: Bạn đã cài đặt phần mở rộng JSX
             Snippets đúng cách chưa? Bạn có thể kiểm tra bằng cách mở Visual
           </p>
-          <span>Bạn không có tài khoản ? </span>
-          <Link to="/Register">
-            <button>Đăng kí </button>
+          <span>Bạn có tài khoản </span>
+          <Link to="/Login">
+            <button>Đăng nhập </button>
           </Link>
         </div>
         <div className="right">
           <h1>Đăng nhập</h1>
           <form action="">
-            <input type="text" placeholder="Tên đăng nhập" />
+            <input type="text" placeholder="Tên" />
+            <input type="text" placeholder="Họ tên " />
+            <input type="email" placeholder="Email" />
             <input type="password" placeholder="Mật khẩu " />
-            <button onClick={handleLogin}>Đăng nhập</button>
+            <button>Đăng nhập</button>
           </form>
         </div>
       </div>
@@ -37,4 +33,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default register;
