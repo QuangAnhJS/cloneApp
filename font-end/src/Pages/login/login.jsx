@@ -1,14 +1,26 @@
-
-import { Link } from "react-router-dom";
-import "./login.scss";
-import { useContext } from "react";
-import { AuthContext } from "../../context/AthContext";
+import { Link } from 'react-router-dom';
+import './login.scss';
+import { useContext, useState } from 'react';
+import { AuthContext } from '../../context/AthContext';
 
 const Login = () => {
- const{login}=useContext(AuthContext)
- const handleLogin =()=>{
-  login()
- }
+  const [input, setInput] = useState({
+    email: '',
+    password: '',
+  });
+  const [err, setError] = useState(null);
+  const handleChange = (e) => {
+    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  const { login } = useContext(AuthContext);
+  const handleLogin = async (e) => {
+    e.preventDefault();
+    try {
+      await login(input);
+    } catch (error) {
+      setError(error.response.data);
+    }
+  };
   return (
     <div className="login">
       <div className="card">
@@ -27,8 +39,18 @@ const Login = () => {
         <div className="right">
           <h1>Đăng nhập</h1>
           <form action="">
-            <input type="text" placeholder="Tên đăng nhập" />
-            <input type="password" placeholder="Mật khẩu " />
+            <input
+              type="text"
+              placeholder="Tên đăng nhập"
+              name="email"
+              onChange={handleChange}
+            />
+            <input
+              type="password"
+              placeholder="Mật khẩu "
+              name="password"
+              onChange={handleChange}
+            />
             <button onClick={handleLogin}>Đăng nhập</button>
           </form>
         </div>

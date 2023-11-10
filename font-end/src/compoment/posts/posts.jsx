@@ -8,11 +8,13 @@ const Posts = () => {
       id: 1,
       name: 'quang Anch',
       img: 'https://gamek.mediacdn.vn/133514250583805952/2020/6/4/-1591253249203679369585.jpg',
+      title: 'hello word',
     },
     {
       id: 2,
       name: 'quang Anch',
       img: 'https://gamek.mediacdn.vn/133514250583805952/2020/6/4/-1591253249203679369585.jpg',
+      title: 'hello word',
     },
   ];
 

@@ -1,8 +1,29 @@
-import React from "react";
-import { Link } from "react-router-dom";
-import "./dangki.scss";
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import axios from 'axios';
+import './dangki.scss';
 
-const register = () => {
+const Register = () => {
+  const [input, setInput] = useState({
+    userName: '',
+    name: '',
+    email: '',
+    password: '',
+  });
+  const [error, setError] = useState(null);
+  const handleChange = (e) => {
+    setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
+  };
+  const handleClick = async (e) => {
+    e.preventDefault();
+    try {
+      await axios.post('http://localhost:8080/api/auth/register', input);
+    } catch (error) {
+      // setError(error.response.data);
+      alert(error.response.data);
+    }
+  };
+  console.log(error);
   return (
     <div className="dangKi">
       <div className="card">
@@ -21,11 +42,32 @@ const register = () => {
         <div className="right">
           <h1>Đăng nhập</h1>
           <form action="">
-            <input type="text" placeholder="Tên" />
-            <input type="text" placeholder="Họ tên " />
-            <input type="email" placeholder="Email" />
-            <input type="password" placeholder="Mật khẩu " />
-            <button>Đăng nhập</button>
+            <input
+              type="text"
+              placeholder="Tên"
+              name="userName"
+              onChange={handleChange}
+            />
+            <input
+              type="text"
+              placeholder="Họ tên "
+              name="name"
+              onChange={handleChange}
+            />
+            <input
+              type="email"
+              placeholder="Email"
+              name="email"
+              onChange={handleChange}
+            />
+            <input
+              type="password"
+              placeholder="Mật khẩu "
+              name="password"
+              onChange={handleChange}
+            />
+
+            <button onClick={handleClick}>Đăng nhập</button>
           </form>
         </div>
       </div>
@@ -33,4 +75,4 @@ const register = () => {
   );
 };
 
-export default register;
+export default Register;

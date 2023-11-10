@@ -32,6 +32,7 @@ const Post = ({ post }) => {
 
           <MoreHorizIcon></MoreHorizIcon>
         </div>
+        <p>{post.title}</p>
         <div className="content">
           <img src={post.img} alt="" />
         </div>
