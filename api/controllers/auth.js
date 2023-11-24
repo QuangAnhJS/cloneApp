@@ -41,8 +41,6 @@ export const register = async (req, res) => {
     }
     const hashedPassword = bcrypt.hashSync(req.body.password, salt);
 
-    const createUser =
-      "INSERT INTO users (userName, email, password, name) VALUES (?, ?, ?, ?)";
     const values = [
       req.body.userName,
       req.body.email,
@@ -57,7 +55,10 @@ export const register = async (req, res) => {
     ) {
       res.status(209).json("Vui lòng nhập đầy đủ thông tin");
     } else {
-      await DB.execute(createUser, values);
+      await DB.execute(
+        "INSERT INTO users (`userName`, `email`, `password`, `name`) VALUES (?, ?, ?, ?)",
+        [...values]
+      );
       res.status(200).json("Tạo tài khoản thành công");
     }
   } catch (err) {
