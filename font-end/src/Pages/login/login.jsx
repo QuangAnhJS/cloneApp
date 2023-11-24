@@ -1,4 +1,4 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './login.scss';
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../context/AthContext';
@@ -8,7 +8,7 @@ const Login = () => {
     email: '',
     password: '',
   });
-  const [err, setError] = useState(null);
+  const [error, setError] = useState(null);
   const handleChange = (e) => {
     setInput((prev) => ({ ...prev, [e.target.name]: e.target.value }));
   };
@@ -17,10 +17,12 @@ const Login = () => {
     e.preventDefault();
     try {
       await login(input);
+      nav('/');
     } catch (error) {
       setError(error.response.data);
     }
   };
+  const nav = useNavigate();
   return (
     <div className="login">
       <div className="card">
@@ -51,6 +53,7 @@ const Login = () => {
               name="password"
               onChange={handleChange}
             />
+            {error && error}
             <button onClick={handleLogin}>Đăng nhập</button>
           </form>
         </div>

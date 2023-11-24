@@ -19,8 +19,8 @@ const Register = () => {
     try {
       await axios.post('http://localhost:8080/api/auth/register', input);
     } catch (error) {
-      // setError(error.response.data);
-      alert(error.response.data);
+      setError(error.response.data);
+      // alert(error.response.data);
     }
   };
   console.log(error);
@@ -66,7 +66,7 @@ const Register = () => {
               name="password"
               onChange={handleChange}
             />
-
+            {/* {error && error} */}
             <button onClick={handleClick}>Đăng nhập</button>
           </form>
         </div>

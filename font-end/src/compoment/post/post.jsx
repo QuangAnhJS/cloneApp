@@ -1,6 +1,5 @@
-import { useContext, useState } from 'react';
+import { useState } from 'react';
 import './post.scss';
-import { AuthContext } from '../../context/AthContext';
 import { Link } from 'react-router-dom';
 //icons
 import ShareTwoToneIcon from '@mui/icons-material/ShareTwoTone';
@@ -9,10 +8,12 @@ import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
 import MoreHorizIcon from '@mui/icons-material/MoreHoriz';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import Comments from '../comment/comments';
+import moment from 'moment/moment';
+import 'moment/locale/vi';
 const Post = ({ post }) => {
-  const { currentUser } = useContext(AuthContext);
   const like = false;
   const [commentOpen, setComment] = useState(false);
+
   return (
     <div className="Post">
       <div className="container">
@@ -26,15 +27,22 @@ const Post = ({ post }) => {
               >
                 <span className="name">{post.name}</span>
               </Link>
-              <span className="date">1 phút trước</span>
+              <span className="date">{moment(post.createAt).fromNow()}</span>
             </div>
           </div>
 
           <MoreHorizIcon></MoreHorizIcon>
         </div>
-        <p>{post.title}</p>
+        <p>{post.desc}</p>
         <div className="content">
-          <img src={post.img} alt="" />
+          <img
+            src={
+              `https://res.cloudinary.com/ddivbqham/image/upload/v1700644690/` +
+              post.Image +
+              '.jpg'
+            }
+            alt=""
+          />
         </div>
 
         <div className="icons">
@@ -58,7 +66,7 @@ const Post = ({ post }) => {
           </div>
         </div>
 
-        {commentOpen && <Comments />}
+        {commentOpen && <Comments postId={post.id} />}
       </div>
     </div>
   );

@@ -1,28 +1,26 @@
 import Post from '../post/post';
 import './posts.scss';
+import { useQuery } from '@tanstack/react-query';
+import { makeRequest } from '../../axios';
 
 const Posts = () => {
-  //TEMPORARY
-  const posts = [
-    {
-      id: 1,
-      name: 'quang Anch',
-      img: 'https://gamek.mediacdn.vn/133514250583805952/2020/6/4/-1591253249203679369585.jpg',
-      title: 'hello word',
-    },
-    {
-      id: 2,
-      name: 'quang Anch',
-      img: 'https://gamek.mediacdn.vn/133514250583805952/2020/6/4/-1591253249203679369585.jpg',
-      title: 'hello word',
-    },
-  ];
-
+  const { isPending, error, data } = useQuery({
+    queryKey: ['post'],
+    queryFn: () =>
+      makeRequest.get('/posts').then((res) => {
+        return res.data;
+      }),
+  });
+  console.log(data);
+  if (isPending) return 'isLoading';
+  if (error) return 'error' + error.message;
   return (
     <div className="posts">
-      {posts.map((post) => (
-        <Post post={post} key={post.id} />
-      ))}
+      {error
+        ? 'lỗi'
+        : isPending
+        ? 'loading'
+        : data.map((post) => <Post post={post} key={post.id} />)}
     </div>
   );
 };
